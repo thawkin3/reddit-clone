@@ -1,0 +1,8 @@
+.userPage h2 {
+  margin-top: 2rem;
+}
+
+.userPage .postsSection,
+.userPage .commentsSection {
+  margin-left: 2rem;
+}

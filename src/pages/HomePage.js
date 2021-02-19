@@ -1,18 +1,52 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Subreddit } from '../components/Subreddit'
+import { User } from '../components/User'
+import './HomePage.css'
 
 export const HomePage = () => (
-  <>
-    <h2>Home page</h2>
-    <h3>Popular Subreddits</h3>
-    <div>
-      <Link to="/subreddit/1">Subreddit 1</Link>
+  <div className="homePage">
+    <p>Welcome to Reddit! Find a subreddit to browse or user to follow.</p>
+    <h2>Popular Subreddits</h2>
+    <div className="subredditsSection">
+      <Subreddit
+        title="Subreddit 1"
+        description="Something about this"
+        routePath="/subreddit/1"
+      />
+      <Subreddit
+        title="Subreddit 2"
+        description="Something about this"
+        routePath="/subreddit/2"
+      />
+      <Subreddit
+        title="Subreddit 3"
+        description="Something about this"
+        routePath="/subreddit/3"
+      />
     </div>
-    <div>
-      <Link to="/subreddit/2">Subreddit 2</Link>
+    <h2>Popular Users</h2>
+    <div className="usersSection">
+      <User
+        isPreview
+        postCount={10}
+        commentCount={15}
+        userName="John Doe"
+        userId={1}
+      />
+      <User
+        isPreview
+        postCount={20}
+        commentCount={25}
+        userName="Jane Doe"
+        userId={2}
+      />
+      <User
+        isPreview
+        postCount={30}
+        commentCount={35}
+        userName="Matt Smith"
+        userId={3}
+      />
     </div>
-    <div>
-      <Link to="/subreddit/3">Subreddit 3</Link>
-    </div>
-  </>
+  </div>
 )
