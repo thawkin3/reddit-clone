@@ -3,10 +3,30 @@ import { Link } from 'react-router-dom'
 import { Card } from './Card'
 import './Comment.css'
 
-export const Comment = ({ commentContent, voteCount, userName, userId }) => (
+export const Comment = ({
+  commentContent,
+  voteCount,
+  userName,
+  postTitle,
+  postId,
+  isOnUserPage,
+  isOnPostPage,
+}) => (
   <Card>
-    <p className="commentUser">
-      Posted by <Link to={`/user/${userId}`}>{userName}</Link>
+    <p className="commentLocation">
+      Commented
+      {!isOnUserPage && (
+        <span className="commentUser">
+          {' '}
+          by <Link to={`/user/${userName}`}>u/{userName}</Link>
+        </span>
+      )}
+      {!isOnPostPage && (
+        <span className="commentPost">
+          {' '}
+          on <Link to={`/post/${postId}`}>{postTitle}</Link>
+        </span>
+      )}
     </p>
     <p className="commentContent">{commentContent}</p>
     <p className="commentVoteCount">{voteCount} votes</p>

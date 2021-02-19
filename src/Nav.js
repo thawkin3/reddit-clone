@@ -4,7 +4,7 @@ import './Nav.css'
 
 export const Nav = () => (
   <nav>
-    <h1>Reddit</h1>
+    <span className="appName">Readit</span>
     <Link to="/">Home</Link>
   </nav>
 )

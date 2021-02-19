@@ -8,8 +8,9 @@ nav {
   color: #FFF;
 }
 
-nav h1 {
-  margin: 0;
+nav .appName {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 nav a {

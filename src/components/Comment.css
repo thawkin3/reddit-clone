@@ -1,7 +1,9 @@
-.commentUser {
+.commentLocation {
   margin-top: 0;
+  font-style: italic;
 }
 
 .commentVoteCount {
   margin: 0;
+  font-weight: bold;
 }

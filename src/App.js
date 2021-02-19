@@ -8,7 +8,7 @@ import {
 import { Nav } from './Nav'
 import { HomePage } from './pages/HomePage'
 import { PostPage } from './pages/PostPage'
-import { SubredditPage } from './pages/SubredditPage'
+import { SubreaditPage } from './pages/SubreaditPage'
 import { UserPage } from './pages/UserPage'
 import './App.css'
 
@@ -19,8 +19,8 @@ export function App() {
         <Nav />
         <main>
           <Switch>
-            <Route path="/subreddit/:id">
-              <SubredditPage />
+            <Route path="/subreadit/:id">
+              <SubreaditPage />
             </Route>
             <Route path="/post/:id">
               <PostPage />

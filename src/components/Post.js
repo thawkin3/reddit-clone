@@ -4,30 +4,42 @@ import { Card } from './Card'
 import './Post.css'
 
 export const Post = ({
-  isPreview,
-  routePath,
+  isPreview = false,
+  isOnSubreaditPage = false,
+  isOnUserPage = false,
+  id,
   title,
   voteCount,
   commentCount,
-  subredditName,
-  subredditId,
+  subreaditName,
   userName,
-  userId,
 }) => (
   <Card>
     <p className="postLocation">
-      <span className="postSubreddit">
-        <Link to={`/subreddit/${subredditId}`}>{subredditName}</Link>
-      </span>{' '}
-      <span className="postUser">
-        Posted by <Link to={`/user/${userId}`}>{userName}</Link>
-      </span>
+      Posted
+      {!isOnUserPage && (
+        <span className="postUser">
+          {' '}
+          by <Link to={`/user/${userName}`}>u/{userName}</Link>
+        </span>
+      )}
+      {!isOnSubreaditPage && (
+        <span className="postSubreadit">
+          {' '}
+          in <Link to={`/subreadit/${subreaditName}`}>r/{subreaditName}</Link>
+        </span>
+      )}
     </p>
-    <h3 className="postTitle">
-      {isPreview ? <Link to={routePath}>{title}</Link> : title}
-    </h3>
+    {isPreview ? (
+      <h3 className="postTitle">
+        <Link to={`/post/${id}`}>{title}</Link>
+      </h3>
+    ) : (
+      <h1 className="postTitle">{title}</h1>
+    )}
     <p className="postStats">
-      <span className="postVoteCount">{voteCount} votes</span>{' '}
+      <span className="postVoteCount">{voteCount} votes</span>
+      {' | '}
       <span className="postCommentCount">{commentCount} comments</span>
     </p>
   </Card>

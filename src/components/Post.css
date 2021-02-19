@@ -1,7 +1,9 @@
 .postLocation {
   margin-top: 0;
+  font-style: italic;
 }
 
 .postStats {
   margin: 0;
+  font-weight: bold;
 }

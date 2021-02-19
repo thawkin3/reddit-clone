@@ -6,34 +6,31 @@ import './PostPage.css'
 export const PostPage = () => (
   <div className="postPage">
     <Post
-      isPreview={false}
       title="Post 1"
       voteCount={100}
       commentCount={20}
-      subredditName="Subreddit 1"
-      subredditId={1}
-      userName="John Doe"
-      userId={1}
+      subreaditName="1964"
+      userName="JohnDoe"
     />
     <h3>Comments</h3>
     <div className="commentsSection">
       <Comment
+        isOnPostPage
         commentContent="This is my comment here."
         voteCount={50}
-        userName="Jane Doe"
-        userId={2}
+        userName="JaneDoe"
       />
       <Comment
+        isOnPostPage
         commentContent="This is another comment."
         voteCount={20}
-        userName="Matt Smith"
-        userId={3}
+        userName="MattSmith"
       />
       <Comment
+        isOnPostPage
         commentContent="This is a snarky comment."
         voteCount={10}
-        userName="Emily VanWagner"
-        userId={4}
+        userName="EmilyVanWagner"
       />
     </div>
   </div>

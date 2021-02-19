@@ -4,17 +4,16 @@ import { Card } from './Card'
 import './User.css'
 
 export const User = ({
-  isPreview,
+  isPreview = false,
   postCount,
   commentCount,
   userName,
-  userId,
   bio,
 }) => (
   <Card>
     {isPreview ? (
       <h3 className="userName">
-        <Link to={`/users/${userId}`}>{userName}</Link>
+        <Link to={`/user/${userName}`}>{userName}</Link>
       </h3>
     ) : (
       <>
