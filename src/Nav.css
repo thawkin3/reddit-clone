@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #FF4500;
+  color: #FFF;
+}
+
+nav h1 {
+  margin: 0;
+}

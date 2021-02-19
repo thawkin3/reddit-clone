@@ -1,0 +1,9 @@
+./vscode
+.idea
+/build
+/coverage
+/dist
+/node_modules
+package.json
+CHANGELOG.md
+.github/
