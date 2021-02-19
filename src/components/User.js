@@ -13,7 +13,7 @@ export const User = ({
   <Card>
     {isPreview ? (
       <h3 className="userName">
-        <Link to={`/user/${userName}`}>{userName}</Link>
+        <Link to={`/user/${userName}`}>u/{userName}</Link>
       </h3>
     ) : (
       <>
@@ -22,7 +22,8 @@ export const User = ({
       </>
     )}
     <p className="userStats">
-      <span className="userPostCount">{postCount} posts</span>{' '}
+      <span className="userPostCount">{postCount} posts</span>
+      {' | '}
       <span className="userCommentCount">{commentCount} comments</span>
     </p>
   </Card>
