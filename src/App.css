@@ -9,3 +9,18 @@ main {
 main > h2 {
   margin-top: 0;
 }
+
+main a {
+  color: #0079D3;
+  padding-bottom: 0.25rem;
+  text-decoration: none;
+}
+
+main a:hover,
+main a:focus {
+  color: #0079D3;
+  text-decoration: none;
+  outline: 0;
+  padding-bottom: 0.125rem;
+  border-bottom: 0.125rem solid #0079D3;
+}
