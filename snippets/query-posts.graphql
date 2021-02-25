@@ -1,0 +1,18 @@
+query GetAllPosts {
+  queryPost {
+    id
+    title
+    user {
+      userName
+    }
+    subreadit {
+      name
+    }
+    comments {
+      commentContent
+      user {
+        userName
+      }
+    }
+  }
+}

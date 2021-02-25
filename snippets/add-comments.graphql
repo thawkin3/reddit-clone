@@ -1,0 +1,47 @@
+mutation AddComments {
+  addComment(
+    input: [
+      {
+        commentContent: "Pam Comment on Jim post 1 on 1984 subreadit"
+        post: {
+          id: "0x273e"
+        }
+        user: {
+          id: "0x2731"
+        }
+        voteCount: 0
+      },
+      {
+        commentContent: "Oscar Comment on Jim post 1 on 1984 subreadit"
+        post: {
+          id: "0x273e"
+        }
+        user: {
+          id: "0x272e"
+        }
+        voteCount: 0
+      },
+      {
+        commentContent: "Toby Comment on Jim post 1 on 1984 subreadit"
+        post: {
+          id: "0x273e"
+        }
+        user: {
+          id: "0x272f"
+        }
+        voteCount: 0
+      },
+    ]
+  ) {
+    comment {
+      id
+      commentContent
+      user {
+        userName
+      }
+      post {
+        title
+      }
+    }
+  }
+}

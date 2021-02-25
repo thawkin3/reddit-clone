@@ -1,0 +1,31 @@
+type Comment {
+  id: ID!
+  commentContent: String!
+  user: User! @hasInverse(field:"comments")
+  post: Post! @hasInverse(field:"comments")
+  voteCount: Int
+}
+
+type Post {
+  id: ID!
+  title: String!
+  subreadit: Subreadit! @hasInverse(field:"posts")
+  user: User! @hasInverse(field:"posts")
+  voteCount: Int
+  comments: [Comment] @hasInverse(field:"post")
+}
+
+type Subreadit {
+  id: ID!
+  name: String!
+  description: String
+  posts: [Post] @hasInverse(field:"subreadit")
+}
+
+type User {
+  id: ID!
+  userName: String! @search(by:[fulltext])
+  bio: String
+  comments: [Comment] @hasInverse(field:"user")
+  posts: [Post] @hasInverse(field:"user")
+}

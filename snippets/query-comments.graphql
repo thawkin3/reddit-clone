@@ -1,0 +1,12 @@
+query GetAllComments {
+  queryComment {
+    id
+    commentContent
+    user {
+      userName
+    }
+    post {
+      title
+    }
+  }
+}

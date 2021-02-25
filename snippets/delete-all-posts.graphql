@@ -1,0 +1,7 @@
+mutation DeleteAllPosts {
+  deletePost(filter: {}) {
+    post {
+      title
+    }
+  }
+}

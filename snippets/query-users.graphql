@@ -1,0 +1,10 @@
+query GetAllUsers {
+  queryUser {
+    id
+    userName
+    bio
+    posts {
+      title
+    }
+  }
+}

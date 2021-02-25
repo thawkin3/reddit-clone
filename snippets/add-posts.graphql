@@ -1,0 +1,149 @@
+mutation AddPosts {
+  addPost(
+    input: [
+      {
+        title: "Jim post 1 on 1984 subreadit"
+        subreadit: {
+          id: "0x272b"
+        }
+        user: {
+          id: "0x2730"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Jim post 2 on fahrenheit451 subreadit"
+        subreadit: {
+          id: "0x272c"
+        }
+        user: {
+          id: "0x2730"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Jim post 3 on thecatcherintherye subreadit"
+        subreadit: {
+          id: "0x272d"
+        }
+        user: {
+          id: "0x2730"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Pam post 1 on 1984 subreadit"
+        subreadit: {
+          id: "0x272b"
+        }
+        user: {
+          id: "0x2731"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Pam post 2 on fahrenheit451 subreadit"
+        subreadit: {
+          id: "0x272c"
+        }
+        user: {
+          id: "0x2731"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Pam post 3 on thecatcherintherye subreadit"
+        subreadit: {
+          id: "0x272d"
+        }
+        user: {
+          id: "0x2731"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Toby post 1 on 1984 subreadit"
+        subreadit: {
+          id: "0x272b"
+        }
+        user: {
+          id: "0x272f"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Toby post 2 on fahrenheit451 subreadit"
+        subreadit: {
+          id: "0x272c"
+        }
+        user: {
+          id: "0x272f"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Toby post 3 on thecatcherintherye subreadit"
+        subreadit: {
+          id: "0x272d"
+        }
+        user: {
+          id: "0x272f"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Oscar post 1 on 1984 subreadit"
+        subreadit: {
+          id: "0x272b"
+        }
+        user: {
+          id: "0x272e"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Oscar post 2 on fahrenheit451 subreadit"
+        subreadit: {
+          id: "0x272c"
+        }
+        user: {
+          id: "0x272e"
+        }
+        voteCount: 0
+        comments: []
+      },
+      {
+        title: "Oscar post 3 on thecatcherintherye subreadit"
+        subreadit: {
+          id: "0x272d"
+        }
+        user: {
+          id: "0x272e"
+        }
+        voteCount: 0
+        comments: []
+      }
+    ]
+  ) {
+    post {
+      id
+      title
+      user {
+        userName
+      }
+      subreadit {
+        name
+      }
+    }
+  }
+}

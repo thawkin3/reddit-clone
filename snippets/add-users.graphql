@@ -1,0 +1,36 @@
+mutation AddUsers {
+  addUser(
+    input: [
+      {
+        userName: "JimHalpert"
+        bio: "Office prankster. Sports marketing entrepreneur."
+        comments: []
+        posts: []
+      },
+      {
+        userName: "PamBeesly"
+        bio: "Local artist. Founding member of the Finer Things Club."
+        comments: []
+        posts: []
+      },
+      {
+        userName: "OscarMartinez"
+        bio: "Trivia competition runner up. Founding member of the Finer Things Club."
+        comments: []
+        posts: []
+      },
+      {
+        userName: "TobyFlenderson"
+        bio: "Aspiring novelist. Founding member of the Finer Things Club."
+        comments: []
+        posts: []
+      }
+    ]
+  ) {
+    user {
+      id
+      userName
+      bio
+    }
+  }
+}

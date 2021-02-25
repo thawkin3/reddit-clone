@@ -1,0 +1,24 @@
+mutation AddSubreadits {
+  addSubreadit(
+    input: [
+      {
+        name: "1984"
+        description: "A dystopian social science fiction novel by English novelist George Orwell." 
+      },
+      {
+        name: "fahrenheit451"
+        description: "A future American society where books are outlawed and firemen burn any that are found." 
+      },
+      {
+        name: "thecatcherintherye"
+        description: "Holden Caulfield, an angry, depressed 16-year-old, lives in an unspecified institution in California after the end of World War II." 
+      }
+    ]
+  ) {
+    subreadit {
+      id
+      name
+      description
+    }
+  }
+}

@@ -1,0 +1,7 @@
+mutation DeleteAllComments {
+  deleteComment(filter: {}) {
+    comment {
+      commentContent
+    }
+  }
+}

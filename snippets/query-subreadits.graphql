@@ -1,0 +1,10 @@
+query GetAllSubreadits {
+  querySubreadit {
+    id
+    name
+    description
+    posts {
+      title
+    }
+  }
+}

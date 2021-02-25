@@ -1,0 +1,7 @@
+mutation DeleteAllSubreadits {
+  deleteSubreadit(filter: {}) {
+    subreadit {
+      name
+    }
+  }
+}
