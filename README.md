@@ -1,6 +1,6 @@
 # Reddit Clone
 
-Reddit clone app built with React, React Router, and Slash GraphQL
+Reddit clone app built with React, React Router, Apollo Client, and Slash GraphQL
 
 ## Getting Started
 

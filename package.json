@@ -1,6 +1,6 @@
 {
   "name": "reddit-clone",
-  "description": "Reddit clone app built with React, React Router, and Slash GraphQL",
+  "description": "Reddit clone app built with React, React Router, Apollo Client, and Slash GraphQL",
   "version": "0.1.0",
   "private": true,
   "homepage": "http://tylerhawkins.info/reddit-clone/build/",
