@@ -1,76 +1,114 @@
 import React from 'react'
+import { useQuery, gql } from '@apollo/client'
+import { withRouter } from 'react-router-dom'
 import { User } from '../components/User'
 import { Post } from '../components/Post'
 import { Comment } from '../components/Comment'
+import { LoadingSpinner } from '../components/LoadingSpinner'
+import { ErrorMessage } from '../components/ErrorMessage'
 import './UserPage.css'
 
-export const UserPage = () => (
-  <div className="userPage">
-    <User
-      postCount={10}
-      commentCount={15}
-      userName="JohnDoe"
-      bio="Hi, this is a little about me."
-    />
-    <h2>JohnDoe's Posts</h2>
-    <div className="postsSection">
-      <Post
-        isPreview
-        isOnUserPage
-        id={1}
-        title="Post 1"
-        voteCount={100}
-        commentCount={12}
-        subreaditName="1984"
-        userName="JohnDoe"
-      />
-      <Post
-        isPreview
-        isOnUserPage
-        id={2}
-        title="Post 2"
-        voteCount={200}
-        commentCount={25}
-        subreaditName="fahrenheit451"
-        userName="JohnDoe"
-      />
-      <Post
-        isPreview
-        isOnUserPage
-        id={3}
-        title="Post 3"
-        voteCount={300}
-        commentCount={44}
-        subreaditName="thecatcherintherye"
-        userName="JohnDoe"
-      />
+export const UserPage = ({ match }) => {
+  const FETCH_USER = gql`
+    query FetchUser {
+      queryUser(filter: { userName: { eq: "${match.params.id}" } }) {
+        userName
+        bio
+        posts {
+          id
+          title
+          user {
+            userName
+          }
+          subreadit {
+            name
+          }
+          voteCount
+          commentsAggregate {
+            count
+          }
+        }
+        postsAggregate {
+          count
+        }
+        comments {
+          id
+          commentContent
+          voteCount
+          user {
+            userName
+          }
+          post {
+            title
+            id
+          }
+        }
+        commentsAggregate {
+          count
+        }
+      }
+    }
+  `
+
+  const { loading, data, error } = useQuery(FETCH_USER)
+
+  return (
+    <div className="userPage">
+      {loading && <LoadingSpinner />}
+      {error && <ErrorMessage />}
+      {data &&
+        (data?.queryUser.length ? (
+          <>
+            <User
+              userName={data.queryUser[0].userName}
+              bio={data.queryUser[0].bio}
+              postCount={data.queryUser[0].postsAggregate?.count}
+              commentCount={data.queryUser[0].commentsAggregate?.count}
+            />
+            <h2>Posts</h2>
+            <div className="postsSection">
+              {data.queryUser[0].posts.length ? (
+                data.queryUser[0].posts.map(post => (
+                  <Post
+                    key={post.id}
+                    isPreview
+                    isOnUserPage
+                    id={post.id}
+                    title={post.title}
+                    voteCount={post.voteCount}
+                    commentCount={post.commentsAggregate?.count}
+                    subreaditName={post.subreadit.name}
+                    userName={post.user.userName}
+                  />
+                ))
+              ) : (
+                <p>No posts yet!</p>
+              )}
+            </div>
+            <h2>Comments</h2>
+            <div className="commentsSection">
+              {data.queryUser[0].comments.length ? (
+                data.queryUser[0].comments.map(comment => (
+                  <Comment
+                    key={comment.id}
+                    isOnUserPage
+                    postTitle={comment.post.title}
+                    postId={comment.post.id}
+                    commentContent={comment.commentContent}
+                    voteCount={comment.voteCount}
+                    userName={comment.user.userName}
+                  />
+                ))
+              ) : (
+                <p>No comments yet!</p>
+              )}
+            </div>
+          </>
+        ) : (
+          <ErrorMessage />
+        ))}
     </div>
-    <h2>JohnDoe's Comments</h2>
-    <div className="commentsSection">
-      <Comment
-        isOnUserPage
-        postTitle="Post 1"
-        postId={1}
-        commentContent="This is my comment here."
-        voteCount={50}
-        userName="JohnDoe"
-      />
-      <Comment
-        isOnUserPage
-        postTitle="Post 2"
-        postId={2}
-        commentContent="This is another comment."
-        voteCount={20}
-        userName="JohnDoe"
-      />
-      <Comment
-        isOnUserPage
-        postTitle="Post 3"
-        postId={3}
-        commentContent="This is a snarky comment."
-        voteCount={10}
-        userName="JohnDoe"
-      />
-    </div>
-  </div>
-)
+  )
+}
+
+export const UserPageWithRouter = withRouter(UserPage)

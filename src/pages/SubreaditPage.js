@@ -1,46 +1,72 @@
 import React from 'react'
+import { useQuery, gql } from '@apollo/client'
+import { withRouter } from 'react-router-dom'
 import { Subreadit } from '../components/Subreadit'
 import { Post } from '../components/Post'
+import { LoadingSpinner } from '../components/LoadingSpinner'
+import { ErrorMessage } from '../components/ErrorMessage'
 import './SubreaditPage.css'
 
-export const SubreaditPage = () => (
-  <div className="subreaditPage">
-    <Subreadit
-      title="1984"
-      description="A dystopian social science fiction novel by English novelist George Orwell."
-    />
-    <h3>Posts</h3>
-    <div className="postsSection">
-      <Post
-        isPreview
-        isOnSubreaditPage
-        id={1}
-        title="Post 1"
-        voteCount={100}
-        commentCount={20}
-        subreaditName="1984"
-        userName="JohnDoe"
-      />
-      <Post
-        isPreview
-        isOnSubreaditPage
-        id={2}
-        title="Post 2"
-        voteCount={200}
-        commentCount={25}
-        subreaditName="1984"
-        userName="JaneDoe"
-      />
-      <Post
-        isPreview
-        isOnSubreaditPage
-        id={3}
-        title="Post 3"
-        voteCount={300}
-        commentCount={28}
-        subreaditName="1984"
-        userName="MattSmith"
-      />
+export const SubreaditPage = ({ match }) => {
+  const FETCH_SUBREADIT_WITH_POSTS = gql`
+    query FetchSubreaditWithPosts {
+      querySubreadit(filter: { name: { eq: "${match.params.id}" } }) {
+        name
+        description
+        posts {
+          id
+          title
+          user {
+            userName
+          }
+          voteCount
+          commentsAggregate {
+            count
+          }
+        }
+      }
+    }
+  `
+
+  const { loading, data, error } = useQuery(FETCH_SUBREADIT_WITH_POSTS)
+
+  return (
+    <div className="subreaditPage">
+      {loading && <LoadingSpinner />}
+      {error && <ErrorMessage />}
+      {data &&
+        (data?.querySubreadit.length ? (
+          <>
+            <Subreadit
+              title={data.querySubreadit[0].name}
+              description={data.querySubreadit[0].description}
+            />
+            <h2>Posts</h2>
+            <div className="postsSection">
+              {data.querySubreadit[0].posts.length ? (
+                data.querySubreadit[0].posts.map(post => (
+                  <Post
+                    key={post.id}
+                    isPreview
+                    isOnSubreaditPage
+                    id={post.id}
+                    title={post.title}
+                    voteCount={post.voteCount}
+                    commentCount={post.commentsAggregate?.count}
+                    subreaditName={data.querySubreadit[0].name}
+                    userName={post.user.userName}
+                  />
+                ))
+              ) : (
+                <p>No posts yet!</p>
+              )}
+            </div>
+          </>
+        ) : (
+          <ErrorMessage />
+        ))}
     </div>
-  </div>
-)
+  )
+}
+
+export const SubreaditPageWithRouter = withRouter(SubreaditPage)

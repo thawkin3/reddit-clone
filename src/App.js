@@ -5,11 +5,11 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-import { Nav } from './Nav'
+import { Nav } from './components/Nav'
 import { HomePage } from './pages/HomePage'
-import { PostPage } from './pages/PostPage'
-import { SubreaditPage } from './pages/SubreaditPage'
-import { UserPage } from './pages/UserPage'
+import { PostPageWithRouter } from './pages/PostPage'
+import { SubreaditPageWithRouter } from './pages/SubreaditPage'
+import { UserPageWithRouter } from './pages/UserPage'
 import './App.css'
 
 export function App() {
@@ -20,13 +20,13 @@ export function App() {
         <main>
           <Switch>
             <Route path="/subreadit/:id">
-              <SubreaditPage />
+              <SubreaditPageWithRouter />
             </Route>
             <Route path="/post/:id">
-              <PostPage />
+              <PostPageWithRouter />
             </Route>
             <Route path="/user/:id">
-              <UserPage />
+              <UserPageWithRouter />
             </Route>
             <Route path="/">
               <HomePage />

@@ -1,3 +1,7 @@
+.postPage h2 {
+  margin-top: 2rem;
+}
+
 .postPage .commentsSection {
   margin-left: 2rem;
 }

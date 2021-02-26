@@ -9,8 +9,8 @@ export const Post = ({
   isOnUserPage = false,
   id,
   title,
-  voteCount,
-  commentCount,
+  voteCount = 0,
+  commentCount = 0,
   subreaditName,
   userName,
 }) => (
@@ -38,9 +38,13 @@ export const Post = ({
       <h1 className="postTitle">{title}</h1>
     )}
     <p className="postStats">
-      <span className="postVoteCount">{voteCount} votes</span>
+      <span className="postVoteCount">
+        {voteCount} {voteCount === 1 ? 'vote' : 'votes'}
+      </span>
       {' | '}
-      <span className="postCommentCount">{commentCount} comments</span>
+      <span className="postCommentCount">
+        {commentCount} {commentCount === 1 ? 'comment' : 'comments'}
+      </span>
     </p>
   </Card>
 )

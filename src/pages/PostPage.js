@@ -1,37 +1,76 @@
 import React from 'react'
+import { useQuery, gql } from '@apollo/client'
+import { withRouter } from 'react-router-dom'
 import { Post } from '../components/Post'
 import { Comment } from '../components/Comment'
+import { LoadingSpinner } from '../components/LoadingSpinner'
+import { ErrorMessage } from '../components/ErrorMessage'
 import './PostPage.css'
 
-export const PostPage = () => (
-  <div className="postPage">
-    <Post
-      title="Post 1"
-      voteCount={100}
-      commentCount={20}
-      subreaditName="1964"
-      userName="JohnDoe"
-    />
-    <h3>Comments</h3>
-    <div className="commentsSection">
-      <Comment
-        isOnPostPage
-        commentContent="This is my comment here."
-        voteCount={50}
-        userName="JaneDoe"
-      />
-      <Comment
-        isOnPostPage
-        commentContent="This is another comment."
-        voteCount={20}
-        userName="MattSmith"
-      />
-      <Comment
-        isOnPostPage
-        commentContent="This is a snarky comment."
-        voteCount={10}
-        userName="EmilyVanWagner"
-      />
+export const PostPage = ({ match }) => {
+  const FETCH_POST_WITH_COMMENTS = gql`
+    query FetchPostWithComments {
+      getPost(id: "${match.params.id}") {
+        title
+        user {
+          userName
+        }
+        subreadit {
+          name
+        }
+        voteCount
+        commentsAggregate {
+          count
+        }
+        comments {
+          commentContent
+          voteCount
+          user {
+            userName
+          }
+        }
+      }
+    }
+  `
+
+  const { loading, data, error } = useQuery(FETCH_POST_WITH_COMMENTS)
+
+  return (
+    <div className="postPage">
+      {loading && <LoadingSpinner />}
+      {error && <ErrorMessage />}
+      {data &&
+        (data.getPost ? (
+          <>
+            <Post
+              title={data.getPost.title}
+              voteCount={data.getPost.voteCount}
+              commentCount={data.getPost.commentsAggregate?.count}
+              subreaditName={data.getPost.subreadit.name}
+              userName={data.getPost.user.userName}
+            />
+            <h2>Comments</h2>
+            <div className="commentsSection">
+              {data.getPost.comments.length ? (
+                data.getPost.comments.map(comment => (
+                  <Comment
+                    key={comment.commentContent}
+                    isOnPostPage
+                    commentContent={comment.commentContent}
+                    voteCount={comment.voteCount}
+                    userName={comment.user.userName}
+                  />
+                ))
+              ) : (
+                <p>No comments yet!</p>
+              )}
+            </div>
+          </>
+        ) : (
+          <ErrorMessage />
+        ))}
     </div>
-  </div>
-)
+  )
+}
+
+export const PostPageWithRouter = withRouter(PostPage)

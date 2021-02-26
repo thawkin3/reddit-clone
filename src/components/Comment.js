@@ -5,7 +5,7 @@ import './Comment.css'
 
 export const Comment = ({
   commentContent,
-  voteCount,
+  voteCount = 0,
   userName,
   postTitle,
   postId,
@@ -29,6 +29,8 @@ export const Comment = ({
       )}
     </p>
     <p className="commentContent">{commentContent}</p>
-    <p className="commentVoteCount">{voteCount} votes</p>
+    <p className="commentVoteCount">
+      {voteCount} {voteCount === 1 ? 'vote' : 'votes'}
+    </p>
   </Card>
 )

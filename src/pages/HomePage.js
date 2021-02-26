@@ -1,37 +1,72 @@
 import React from 'react'
+import { useQuery, gql } from '@apollo/client'
 import { Subreadit } from '../components/Subreadit'
 import { User } from '../components/User'
+import { LoadingSpinner } from '../components/LoadingSpinner'
+import { ErrorMessage } from '../components/ErrorMessage'
 import './HomePage.css'
 
-export const HomePage = () => (
-  <div className="homePage">
-    <p>
-      Welcome to Readit, a community of bookworms discussing their favorite
-      books! Find a subreadit to browse or a user to follow below.
-    </p>
-    <h2>Popular Subreadits</h2>
-    <div className="subreaditsSection">
-      <Subreadit
-        isPreview
-        title="1984"
-        description="A dystopian social science fiction novel by English novelist George Orwell."
-      />
-      <Subreadit
-        isPreview
-        title="fahrenheit451"
-        description="A future American society where books are outlawed and firemen burn any that are found."
-      />
-      <Subreadit
-        isPreview
-        title="thecatcherintherye"
-        description="Holden Caulfield, an angry, depressed 16-year-old, lives in an unspecified institution in California after the end of World War II."
-      />
+const FETCH_SUBREADITS_AND_USERS = gql`
+  query FetchSubreaditsAndUsers {
+    querySubreadit {
+      name
+      description
+    }
+    queryUser {
+      userName
+      bio
+      postsAggregate {
+        count
+      }
+      commentsAggregate {
+        count
+      }
+    }
+  }
+`
+
+export const HomePage = () => {
+  const { loading, data, error } = useQuery(FETCH_SUBREADITS_AND_USERS)
+
+  return (
+    <div className="homePage">
+      <h1 className="srOnly">Home</h1>
+      <p>
+        Welcome to Readit, a community of bookworms discussing their favorite
+        books! Find a subreadit to browse or a user to follow below.
+      </p>
+      <h2>Popular Subreadits</h2>
+      {loading && <LoadingSpinner />}
+      {error && <ErrorMessage />}
+      {data && (
+        <div className="subreaditsSection">
+          {data.querySubreadit.map(subreadit => (
+            <Subreadit
+              key={subreadit.name}
+              isPreview
+              title={subreadit.name}
+              description={subreadit.description}
+            />
+          ))}
+        </div>
+      )}
+      <h2>Popular Users</h2>
+      {loading && <LoadingSpinner />}
+      {error && <ErrorMessage />}
+      {data && (
+        <div className="usersSection">
+          {data.queryUser.map(user => (
+            <User
+              key={user.userName}
+              isPreview
+              userName={user.userName}
+              bio={user.bio}
+              postCount={user.postsAggregate?.count}
+              commentCount={user.commentsAggregate?.count}
+            />
+          ))}
+        </div>
+      )}
     </div>
-    <h2>Popular Users</h2>
-    <div className="usersSection">
-      <User isPreview postCount={10} commentCount={15} userName="JohnDoe" />
-      <User isPreview postCount={20} commentCount={25} userName="JaneDoe" />
-      <User isPreview postCount={30} commentCount={35} userName="MattSmith" />
-    </div>
-  </div>
-)
+  )
+}

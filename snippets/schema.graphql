@@ -17,14 +17,14 @@ type Post {
 
 type Subreadit {
   id: ID!
-  name: String!
+  name: String! @search(by:[exact])
   description: String
   posts: [Post] @hasInverse(field:"subreadit")
 }
 
 type User {
   id: ID!
-  userName: String! @search(by:[fulltext])
+  userName: String! @search(by:[exact])
   bio: String
   comments: [Comment] @hasInverse(field:"user")
   posts: [Post] @hasInverse(field:"user")

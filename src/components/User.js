@@ -5,8 +5,8 @@ import './User.css'
 
 export const User = ({
   isPreview = false,
-  postCount,
-  commentCount,
+  postCount = 0,
+  commentCount = 0,
   userName,
   bio,
 }) => (
@@ -16,15 +16,17 @@ export const User = ({
         <Link to={`/user/${userName}`}>u/{userName}</Link>
       </h3>
     ) : (
-      <>
-        <h1 className="userName">{userName}</h1>
-        <p>{bio}</p>
-      </>
+      <h1 className="userName">{userName}</h1>
     )}
+    <p>{bio}</p>
     <p className="userStats">
-      <span className="userPostCount">{postCount} posts</span>
+      <span className="userPostCount">
+        {postCount} {postCount === 1 ? 'post' : 'posts'}
+      </span>
       {' | '}
-      <span className="userCommentCount">{commentCount} comments</span>
+      <span className="userCommentCount">
+        {commentCount} {commentCount === 1 ? 'comment' : 'comments'}
+      </span>
     </p>
   </Card>
 )
