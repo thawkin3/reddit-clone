@@ -2,9 +2,9 @@ mutation AddComments {
   addComment(
     input: [
       {
-        commentContent: "Pam Comment on Jim post 1 on 1984 subreadit"
+        commentContent: "Clever..."
         post: {
-          id: "0x273e"
+          id: "0x753f"
         }
         user: {
           id: "0x2731"
@@ -12,24 +12,64 @@ mutation AddComments {
         voteCount: 0
       },
       {
-        commentContent: "Oscar Comment on Jim post 1 on 1984 subreadit"
+        commentContent: "Like the Office Olympics?"
         post: {
-          id: "0x273e"
+          id: "0x7547"
         }
         user: {
-          id: "0x272e"
+          id: "0x2731"
         }
         voteCount: 0
       },
       {
-        commentContent: "Toby Comment on Jim post 1 on 1984 subreadit"
+        commentContent: "Really Jim?"
         post: {
-          id: "0x273e"
+          id: "0x753f"
+        }
+        user: {
+          id: "0x272e"
+        }
+        voteCount: 1
+      },
+      {
+        commentContent: "Like arguing with Michael about China."
+        post: {
+          id: "0x7540"
+        }
+        user: {
+          id: "0x272e"
+        }
+        voteCount: 9
+      },
+      {
+        commentContent: "I think you mean 2021."
+        post: {
+          id: "0x7546"
+        }
+        user: {
+          id: "0x272e"
+        }
+        voteCount: 14
+      },
+      {
+        commentContent: "You know, this sounds a lot like the premise of my latest Chad Flenderson novel."
+        post: {
+          id: "0x7549"
         }
         user: {
           id: "0x272f"
         }
-        voteCount: 0
+        voteCount: -999
+      },
+      {
+        commentContent: "You know, this sounds a lot like the premise of my latest Chad Flenderson novel."
+        post: {
+          id: "0x7541"
+        }
+        user: {
+          id: "0x272f"
+        }
+        voteCount: -3
       },
     ]
   ) {

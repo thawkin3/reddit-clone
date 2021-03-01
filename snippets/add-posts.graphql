@@ -2,135 +2,135 @@ mutation AddPosts {
   addPost(
     input: [
       {
-        title: "Jim post 1 on 1984 subreadit"
-        subreadit: {
-          id: "0x272b"
-        }
-        user: {
-          id: "0x2730"
-        }
-        voteCount: 0
-        comments: []
-      },
-      {
-        title: "Jim post 2 on fahrenheit451 subreadit"
-        subreadit: {
-          id: "0x272c"
-        }
-        user: {
-          id: "0x2730"
-        }
-        voteCount: 0
-        comments: []
-      },
-      {
-        title: "Jim post 3 on thecatcherintherye subreadit"
-        subreadit: {
-          id: "0x272d"
-        }
-        user: {
-          id: "0x2730"
-        }
-        voteCount: 0
-        comments: []
-      },
-      {
-        title: "Pam post 1 on 1984 subreadit"
+        title: "What can you do, thought Winston, against the lunatic who is more intelligent than yourself; who gives your arguments a fair hearing and simply persists in his lunacy?"
         subreadit: {
           id: "0x272b"
         }
         user: {
           id: "0x2731"
         }
-        voteCount: 0
+        voteCount: 45
         comments: []
       },
       {
-        title: "Pam post 2 on fahrenheit451 subreadit"
+        title: "There must be something in books, things we can’t imagine, to make a woman stay in a burning house; there must be something there. You don’t stay for nothing."
         subreadit: {
           id: "0x272c"
         }
         user: {
           id: "0x2731"
         }
-        voteCount: 0
+        voteCount: 21
         comments: []
       },
       {
-        title: "Pam post 3 on thecatcherintherye subreadit"
+        title: "Among other things, you'll find that you're not the first person who was ever confused and frightened and even sickened by human behavior. You're by no means alone on that score, you'll be excited and stimulated to know. Many, many men have been just as troubled morally and spiritually as you are right now. Happily, some of them kept records of their troubles. You'll learn from them—if you want to. Just as someday, if you have something to offer, someone will learn something from you. It's a beautiful reciprocal arrangement. And it isn't education. It's history. It's poetry."
         subreadit: {
           id: "0x272d"
         }
         user: {
           id: "0x2731"
         }
-        voteCount: 0
+        voteCount: 11
         comments: []
       },
       {
-        title: "Toby post 1 on 1984 subreadit"
+        title: "The similarities between 1984 and our day are striking."
         subreadit: {
           id: "0x272b"
         }
         user: {
           id: "0x272f"
         }
-        voteCount: 0
+        voteCount: 23
         comments: []
       },
       {
-        title: "Toby post 2 on fahrenheit451 subreadit"
+        title: "You can’t make people listen. They have to come round in their own time, wondering what happened and why the world blew up under them."
         subreadit: {
           id: "0x272c"
         }
         user: {
           id: "0x272f"
         }
-        voteCount: 0
+        voteCount: 2
         comments: []
       },
       {
-        title: "Toby post 3 on thecatcherintherye subreadit"
+        title: "People always clap for the wrong reasons."
         subreadit: {
           id: "0x272d"
         }
         user: {
           id: "0x272f"
         }
-        voteCount: 0
+        voteCount: 1
         comments: []
       },
       {
-        title: "Oscar post 1 on 1984 subreadit"
+        title: "1984 was supposed to be a warning, not an instruction manual."
         subreadit: {
           id: "0x272b"
         }
         user: {
           id: "0x272e"
         }
-        voteCount: 0
+        voteCount: 26
         comments: []
       },
       {
-        title: "Oscar post 2 on fahrenheit451 subreadit"
+        title: "Who controls the past controls the future. Who controls the present controls the past."
+        subreadit: {
+          id: "0x272b"
+        }
+        user: {
+          id: "0x272e"
+        }
+        voteCount: 26
+        comments: []
+      },
+      {
+        title: "Remember, the firemen are rarely necessary. The public itself stopped reading of its own accord."
         subreadit: {
           id: "0x272c"
         }
         user: {
           id: "0x272e"
         }
-        voteCount: 0
+        voteCount: 30
         comments: []
       },
       {
-        title: "Oscar post 3 on thecatcherintherye subreadit"
+        title: "1984? More like 2020."
+        subreadit: {
+          id: "0x272b"
+        }
+        user: {
+          id: "0x2730"
+        }
+        voteCount: 6
+        comments: []
+      },
+      {
+        title: "This book was lit!"
+        subreadit: {
+          id: "0x272c"
+        }
+        user: {
+          id: "0x2730"
+        }
+        voteCount: 13
+        comments: []
+      },
+      {
+        title: "I like it when somebody gets excited about something. It's nice."
         subreadit: {
           id: "0x272d"
         }
         user: {
-          id: "0x272e"
+          id: "0x2730"
         }
-        voteCount: 0
+        voteCount: 18
         comments: []
       }
     ]
